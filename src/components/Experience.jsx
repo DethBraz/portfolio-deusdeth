@@ -4,7 +4,7 @@ export default function Experience() {
   return (
     <section id="experiencia" className="section-pad py-28 px-6 bg-paper-dark border-y border-ink/10">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
-        <div>
+        <div className="min-w-0">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-stamp mb-3">
             Entrada 04 — Trajetória
           </p>
@@ -38,7 +38,7 @@ export default function Experience() {
           </ol>
         </div>
 
-        <div>
+        <div className="min-w-0">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-stamp mb-3">
             Entrada 05 — Formação
           </p>

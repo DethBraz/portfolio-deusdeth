@@ -5,7 +5,7 @@ export default function Contact() {
     <section id="contato" className="section-pad py-28 px-6">
       <div className="max-w-4xl mx-auto relative bg-seal text-paper p-12 md:p-16 border-2 border-ink overflow-hidden">
         <div
-          className="absolute top-8 -right-10 md:right-8 rotate-[14deg] border-2 border-paper/60 rounded-full w-24 h-24 flex items-center justify-center font-mono font-extrabold text-[11px] text-paper/70 text-center leading-tight"
+          className="absolute top-6 right-4 md:top-8 md:right-8 rotate-[14deg] border-2 border-paper/60 rounded-full w-20 h-20 md:w-24 md:h-24 flex items-center justify-center font-mono font-extrabold text-[10px] md:text-[11px] text-paper/70 text-center leading-tight"
           aria-hidden="true"
         >
           ABERTO
