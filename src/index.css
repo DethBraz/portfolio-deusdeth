@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* aged ledger paper */
+  --color-paper: #f2e9d8;
+  --color-paper-dark: #e7d9bf;
+  --color-paper-darker: #dbc9a8;
+
+  /* ink */
+  --color-ink: #211a10;
+  --color-ink-soft: #6d5c42;
+  --color-ink-faint: #a3927357;
+
+  /* stamp / seal accents */
+  --color-stamp: #a8332a;
+  --color-stamp-dark: #7e2620;
+  --color-seal: #26436c;
+  --color-seal-light: #3d5c8e;
+  --color-approved: #2c6b4d;
+  --color-rule: #7893ad;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  --ease-smooth: cubic-bezier(0.6, 0, 0.25, 1);
+  --ease-stamp: cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 37px,
+      color-mix(in srgb, var(--color-rule) 32%, transparent) 37px,
+      color-mix(in srgb, var(--color-rule) 32%, transparent) 38px
+    );
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+* {
+  transition-timing-function: var(--ease-smooth);
+}
+
+::selection {
+  background-color: var(--color-stamp);
+  color: var(--color-paper);
+}
+
+.section-pad {
+  scroll-margin-top: 96px;
+}
+
+/* left binder margin — the red rule line of a classic ledger pad */
+.margin-rule {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: clamp(24px, 6vw, 88px);
+  width: 1.5px;
+  background: color-mix(in srgb, var(--color-stamp) 55%, transparent);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .margin-rule {
+    display: none;
+  }
+}
+
+/* paper grain overlay for texture */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* rubber-stamp badge */
+.stamp {
+  font-family: var(--font-mono);
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  mix-blend-mode: multiply;
+  position: relative;
+}
+
+.stamp::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+@keyframes stamp-in {
+  0% {
+    opacity: 0;
+    transform: scale(2.2) rotate(-14deg);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(0.92) rotate(-7deg);
+  }
+  75% {
+    transform: scale(1.04) rotate(-8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-7deg);
+  }
+}
+
+.animate-stamp {
+  animation: stamp-in 0.7s var(--ease-stamp) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 0.6s var(--ease-smooth) both;
+}
+
+/* perforated / receipt-tear edge */
+.torn-top {
+  position: relative;
+}
+
+.torn-top::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 11px;
+  background-image: radial-gradient(circle at 11px 0, transparent 8px, var(--tear-color, var(--color-paper)) 8.5px);
+  background-size: 22px 22px;
+  background-repeat: repeat-x;
+  transform: translateY(-100%);
+}
+
+.leader {
+  border-bottom: 1px dotted color-mix(in srgb, var(--color-ink-soft) 55%, transparent);
+  flex: 1;
+  margin: 0 8px;
+  transform: translateY(-4px);
+}
+
+.paper-card {
+  background: color-mix(in srgb, var(--color-paper) 55%, white 20%);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
+}
