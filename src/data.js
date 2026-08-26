@@ -27,7 +27,7 @@ export const skillGroups = [
   {
     title: 'Banco de Dados',
     color: 'cyan',
-    items: ['PostgreSQL', 'Modelagem relacional'],
+    items: ['PostgreSQL', 'Flyway', 'Modelagem relacional'],
   },
   {
     title: 'Testes',
@@ -47,6 +47,21 @@ export const skillGroups = [
 ]
 
 export const projects = [
+  {
+    title: 'Apurador Simples Nacional',
+    description:
+      'API de apuração do Simples Nacional: calcula o DAS de uma competência a partir do faturamento, tratando as tabelas de alíquota como dado versionado por vigência — não como constante no código.',
+    bullets: [
+      'A data da competência resolve a tabela vigente, não a data de hoje: uma apuração de anos atrás continua reproduzível e auditável',
+      'Repartição do DAS entre seis tributos pelo método dos maiores restos — a soma das partes sempre bate com o total, sem centavo perdido no arredondamento',
+      'Cálculo do Fator R decide entre Anexo III e Anexo V para prestação de serviços',
+      'Resposta devolve a memória de cálculo completa — fórmula, alíquota nominal e parcela a deduzir — não só o valor final',
+      'Tabelas oficiais dos Anexos I, III e V (LC 123/2006) importadas dos dados do Planalto; testes automatizados e CI no GitHub Actions',
+    ],
+    tags: ['Java 17', 'Spring Boot 3', 'PostgreSQL', 'Flyway', 'Docker', 'CI/CD'],
+    repo: 'https://github.com/DethBraz/apurador-simples-nacional',
+    demo: null,
+  },
   {
     title: 'API de Controle Financeiro Pessoal',
     description:
