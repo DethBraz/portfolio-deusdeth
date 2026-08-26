@@ -48,12 +48,12 @@ export default function Experience() {
 
           <div className="space-y-5">
             {education.map((ed) => (
-              <div key={ed.title} className="paper-card p-6 flex items-start justify-between gap-4">
-                <div>
+              <div key={ed.title} className="paper-card p-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                <div className="min-w-0">
                   <h3 className="font-display font-bold text-lg text-ink leading-snug">{ed.title}</h3>
                   <p className="text-ink-soft mt-1">{ed.place}</p>
                 </div>
-                <span className="font-mono text-xs text-ink-soft whitespace-nowrap border border-ink/20 px-2 py-1 shrink-0">
+                <span className="font-mono text-xs text-ink-soft whitespace-nowrap border border-ink/20 px-2 py-1 shrink-0 self-start">
                   {ed.period}
                 </span>
               </div>
